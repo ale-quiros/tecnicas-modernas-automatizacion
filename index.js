@@ -78,12 +78,13 @@ function findGoalWord(words, goalWord ){
 //-------------EJERCICO #4 ELEVAR TODOS AL CUADRADO-------------------------
 
 console.log("Ejercicio#4 cuadrados:  \n");
-console.log (allsquare (9119));
+console.log (allsquare (999));
 console.log("\n-------------------------------");
 
 function allsquare(number){
     let results = [];
     if (Number.isInteger(number) && number >= 0){
+        if (number == 0){ results.push (number);}
         
         while (number >= 1) {
             let digit = number % 10;
