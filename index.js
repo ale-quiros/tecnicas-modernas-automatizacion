@@ -45,7 +45,7 @@ function flatten(...elements) {
 
 console.log("Ejercicio#3 Encontrar palabra:  \n");
 
-let fnElements = ['bow','crystal', 'bow','organic','ally','rain','line', 'rain'];
+let fnElements = ['bow','crystal', 'bows','organic','ally','rain','line', 'rain'];
 let fnGoalWord = "rainbow";
 
 console.log ( findGoalWord (fnElements ,fnGoalWord ) );
@@ -57,25 +57,18 @@ function findGoalWord(words, goalWord ){
 
     for (let index=0; !found && index < words.length; index++){
         let word1 = words[index] ;
-            
+          
         for (let indexAux= 0; !found && indexAux < words.length ; indexAux++){
             let word2 = words[indexAux];
 
             if (word1 + word2 === goalWord || word2 + word1 === goalWord) {
                 found = true;
                 let tempArray = [];
-                
-                if (word1 + word2 === goalWord){
-                    tempArray.push (index, indexAux);
-                }
-                else{
-                    tempArray.push (indexAux, index);            
-                }
-                
+                (word1 + word2 === goalWord) ?  tempArray.push (index, indexAux) : tempArray.push (indexAux, index);
                 results.push (word1, word2, tempArray);
             }
         }
-    }
+    } 
     if (!found)
         results = null;
 
@@ -85,17 +78,21 @@ function findGoalWord(words, goalWord ){
 //-------------EJERCICO #4 ELEVAR TODOS AL CUADRADO-------------------------
 
 console.log("Ejercicio#4 cuadrados:  \n");
-console.log (allsquare (10033));
+console.log (allsquare (9119));
 console.log("\n-------------------------------");
 
 function allsquare(number){
-    console.log (typeof (number));
     let results = [];
-
-    while (number >= 1) {
-        let digit = number % 10;
-        results.unshift (Math.pow(digit, 2));
-        number = Math.floor(number / 10);
+    if (Number.isInteger(number) && number >= 0){
+        
+        while (number >= 1) {
+            let digit = number % 10;
+            results.unshift (Math.pow(digit, 2));
+            number = Math.floor(number / 10);
+        }
+    }
+    else {
+        console.log ("El numero debe ser entero y positivo");
     }
     return results.join('');
 }
