@@ -26,19 +26,15 @@ function uniqC(elements){
 //-------------EJERCICO #2  METODO APLANAR-------------------------
 
 console.log("Ejercicio#2 Aplanar:  \n");
-console.log (     flatten ('a', ['b', 2], 3, null, [[4], ['c']])     );
+console.log (     flatten ([1, [2, 3], 4, 5, [6, [7, [8, [9, [10, [11, [12]]]]]]]])     );
 console.log("\n-------------------------------");
 
-function flatten(...elements) {
-    let results = [];
-    for(let index=0; index < elements.length; index++){
-        if (elements[index] === null){
-           elements[index] = 'null';
-        }
-        results.push(elements[index]);
-    }
-    return results.join();
+
+function flatten(values) {
+  return values.some(Array.isArray) ? flatten([...values.flat()]) : values;
 }
+
+
 
 
 //-------------EJERCICO #3  ENCONTRAR PALABRA META-------------------------
@@ -95,5 +91,5 @@ function allsquare(number){
     else {
         console.log ("El numero debe ser entero y positivo");
     }
-    return results.join('');
+    return  parseInt (results.join(''));
 }
